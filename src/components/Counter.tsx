@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { MouseEventHandler, ReactElement, useState } from "react";
 
 export function Counter(): ReactElement {
   // useState syntax => const [value, setValue] = useState<type>(initialValue)
@@ -18,17 +18,51 @@ export function Counter(): ReactElement {
   //   setCount((previousValue) => previousValue - 1);
   // };
 
+  // return JSX with three click events.
+  // return (
+  //   <div className="counter">
+  //     <p>Counter</p>
+  //     <div className="counter-wrapper">
+  //       <button disabled={count === 0} onClick={() => setCount((c) => c - 1)}>
+  //         -
+  //       </button>
+  //       <p>{count}</p>
+  //       <button onClick={() => setCount((c) => c + 1)}>+</button>
+  //     </div>
+  //     <button onClick={() => setCount(0)}>Reset</button>
+  //   </div>
+  // );
+
+  // return JSX with just one click event.
+
+  const handleOnClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    const target = e.target as HTMLElement;
+
+    if (!target.id) {
+      return;
+    }
+
+    switch (target.id) {
+      case "decrement":
+        return setCount((c) => c - 1);
+      case "increment":
+        return setCount((c) => c + 1);
+      case "reset":
+        return setCount(0);
+    }
+  };
+
   return (
-    <div className="counter">
+    <div className="counter" onClick={handleOnClick}>
       <p>Counter</p>
       <div className="counter-wrapper">
-        <button disabled={count === 0} onClick={() => setCount((c) => c - 1)}>
+        <button id="decrement" disabled={count === 0}>
           -
         </button>
         <p>{count}</p>
-        <button onClick={() => setCount((c) => c + 1)}>+</button>
+        <button id="increment">+</button>
       </div>
-      <button onClick={() => setCount(0)}>Reset</button>
+      <button id="reset">Reset</button>
     </div>
   );
 }
