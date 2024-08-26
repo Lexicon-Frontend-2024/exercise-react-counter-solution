@@ -1,0 +1,9 @@
+.counter .counter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.counter .counter-wrapper button {
+  cursor: pointer;
+}
