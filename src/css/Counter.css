@@ -4,6 +4,11 @@
   gap: 2rem;
 }
 
+.counter button,
 .counter .counter-wrapper button {
   cursor: pointer;
+}
+
+.counter button:disabled {
+  cursor: not-allowed;
 }
