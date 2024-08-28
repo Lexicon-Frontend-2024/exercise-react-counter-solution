@@ -1,0 +1,9 @@
+.content-simulator {
+    height: 1500px;
+}
+
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
